@@ -1,0 +1,232 @@
+<title>Demand Letter Ledger</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F6F6F3; --card:#FFFFFF; --ink:#232B36; --muted:#5A6472;
+  --line:#DDDFDA; --accent:#2F5A8F; --accent-ink:#FFFFFF; --brass:#9C7B3C;
+  --good:#2E7D4F; --warn:#B07C1F; --bad:#A63D3D;
+  --good-bg:#E6F0EA; --warn-bg:#F5EDDC; --bad-bg:#F3E3E3; --neutral-bg:#EAECEF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#191E25; --card:#222933; --ink:#E8E8E4; --muted:#9AA3AE;
+    --line:#37404C; --accent:#7FA6D4; --accent-ink:#14202E; --brass:#C4A265;
+    --good:#7FC49B; --warn:#D9B36A; --bad:#D98A8A;
+    --good-bg:#233A2E; --warn-bg:#3A3222; --bad-bg:#3C2727; --neutral-bg:#2C3440;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#191E25; --card:#222933; --ink:#E8E8E4; --muted:#9AA3AE;
+  --line:#37404C; --accent:#7FA6D4; --accent-ink:#14202E; --brass:#C4A265;
+  --good:#7FC49B; --warn:#D9B36A; --bad:#D98A8A;
+  --good-bg:#233A2E; --warn-bg:#3A3222; --bad-bg:#3C2727; --neutral-bg:#2C3440;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif;padding:0 20px 48px}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:28px 0 18px;border-bottom:2px solid var(--ink);flex-wrap:wrap}
+h1{font:600 26px/1.2 "Source Serif 4",Georgia,serif;margin:0;text-wrap:balance}
+.firm{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);font-weight:600}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--accent);color:var(--accent-ink);border:none;border-radius:4px;padding:8px 16px;font-weight:600}
+.btn:focus-visible,.ghost:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.ghost{background:none;border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:6px 10px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.tile .n{font:700 24px/1.1 "Source Serif 4",Georgia,serif;font-variant-numeric:tabular-nums}
+.tile .l{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.stagehead{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;display:flex;align-items:center;gap:8px}
+.stagehead::after{content:"";flex:1;border-top:1px solid var(--line)}
+.cards{display:grid;gap:12px}
+.client{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:6px 16px}
+.client h3{font:600 17px/1.3 "Source Serif 4",Georgia,serif;margin:0}
+.vs{color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:13px;margin-top:4px}
+.meta b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.pill{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;white-space:nowrap;align-self:start}
+.due{font-size:12px;font-weight:600;justify-self:end}
+.due.late{color:var(--bad)} .due.soon{color:var(--warn)} .due.ok{color:var(--muted)}
+.notes{grid-column:1/-1;color:var(--muted);font-size:13px;border-top:1px dashed var(--line);padding-top:8px;margin-top:6px}
+.actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:4px;padding:40px;text-align:center;color:var(--muted);margin-top:24px}
+.empty p{max-width:46ch;margin:8px auto 16px}
+dialog{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:24px;max-width:520px;width:92%}
+dialog::backdrop{background:rgba(20,25,32,.5)}
+dialog h2{font:600 20px "Source Serif 4",Georgia,serif;margin:0 0 14px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:grid;gap:4px;font-size:12px;font-weight:600;color:var(--muted)}
+label.full{grid-column:1/-1}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:7px 9px;width:100%}
+textarea{resize:vertical;min-height:60px}
+.formfoot{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;margin-top:6px}
+.status{color:var(--muted);font-size:13px;margin-top:16px}
+@media (max-width:560px){form{grid-template-columns:1fr}.client{grid-template-columns:1fr}.due{justify-self:start}}
+</style>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="firm">Hochman Law Group</div>
+      <h1>Demand Letter Ledger</h1>
+    </div>
+    <button class="btn" id="addBtn" hidden>Add client</button>
+  </header>
+  <div class="tiles" id="tiles" hidden></div>
+  <div id="board"></div>
+  <div class="empty" id="empty" hidden>
+    <h3>No clients yet</h3>
+    <p>Add your three paid funnel clients to start the ledger. Each entry tracks the matter, the demand, the fee, and the response deadline.</p>
+    <button class="btn" id="emptyAdd">Add first client</button>
+  </div>
+  <p class="status" id="status">Connecting to the client database…</p>
+</div>
+
+<dialog id="dlg">
+  <h2 id="dlgTitle">Add client</h2>
+  <form id="form" method="dialog">
+    <label>Client name<input name="name" required></label>
+    <label>Opposing party<input name="opposing"></label>
+    <label class="full">Matter<input name="matter" placeholder="Unpaid invoice, security deposit, breach of contract…"></label>
+    <label>Amount demanded ($)<input name="amount" type="number" min="0" step="0.01"></label>
+    <label>Fee paid ($)<input name="fee" type="number" min="0" step="0.01"></label>
+    <label>Stage<select name="stage"></select></label>
+    <label>Response due<input name="due" type="date"></label>
+    <label>Client email<input name="email" type="email"></label>
+    <label>Client phone<input name="phone"></label>
+    <label class="full">Next action<input name="next" placeholder="Draft letter, follow up call, send final notice…"></label>
+    <label class="full">Notes<textarea name="notes"></textarea></label>
+    <div class="formfoot">
+      <button type="button" class="ghost" id="cancelBtn">Cancel</button>
+      <button class="btn" id="saveBtn">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const STAGES = ["Intake","Drafting","Letter Sent","Awaiting Response","Negotiating","Resolved"];
+const stageStyle = {
+  "Intake":["var(--muted)","var(--neutral-bg)"],
+  "Drafting":["var(--warn)","var(--warn-bg)"],
+  "Letter Sent":["var(--accent)","var(--neutral-bg)"],
+  "Awaiting Response":["var(--warn)","var(--warn-bg)"],
+  "Negotiating":["var(--brass)","var(--warn-bg)"],
+  "Resolved":["var(--good)","var(--good-bg)"],
+};
+const $ = id => document.getElementById(id);
+const usd = n => n == null || n === "" ? null :
+  Number(n).toLocaleString("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0});
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const sel = $("form").elements.stage;
+STAGES.forEach(s => sel.add(new Option(s, s)));
+
+let db = null, clients = [], editingId = null;
+
+function dueBadge(c){
+  if (!c.due || c.stage === "Resolved") return "";
+  const days = Math.ceil((new Date(c.due + "T23:59:59") - Date.now()) / 86400000);
+  const cls = days < 0 ? "late" : days <= 3 ? "soon" : "ok";
+  const txt = days < 0 ? `Response overdue ${-days}d` :
+              days === 0 ? "Response due today" : `Response due in ${days}d`;
+  return `<span class="due ${cls}">${txt}</span>`;
+}
+
+function render(){
+  const open = clients.filter(c => c.stage !== "Resolved");
+  const fees = clients.reduce((a,c) => a + (Number(c.fee) || 0), 0);
+  const demanded = open.reduce((a,c) => a + (Number(c.amount) || 0), 0);
+  const t = $("tiles");
+  t.hidden = clients.length === 0;
+  t.innerHTML = [
+    [clients.length, "Clients"],
+    [open.length, "Open matters"],
+    [usd(fees) ?? "$0", "Fees collected"],
+    [usd(demanded) ?? "$0", "Demands outstanding"],
+  ].map(([n,l]) => `<div class="tile"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+  $("empty").hidden = clients.length !== 0 || !db;
+  const board = $("board");
+  board.innerHTML = STAGES.filter(s => clients.some(c => c.stage === s)).map(s => `
+    <div class="stagehead">${s}</div>
+    <div class="cards">${clients.filter(c => c.stage === s).map(card).join("")}</div>`).join("");
+  board.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openDlg(b.dataset.edit));
+  board.querySelectorAll("[data-adv]").forEach(b => b.onclick = () => advance(b.dataset.adv));
+}
+
+function card(c){
+  const [fg,bg] = stageStyle[c.stage] || stageStyle["Intake"];
+  const next = STAGES[STAGES.indexOf(c.stage) + 1];
+  return `<div class="client">
+    <div>
+      <h3>${esc(c.name)}${c.opposing ? ` <span class="vs">v. ${esc(c.opposing)}</span>` : ""}</h3>
+      <div class="meta">
+        ${c.matter ? `<span>${esc(c.matter)}</span>` : ""}
+        ${c.amount ? `<span>Demand <b>${usd(c.amount)}</b></span>` : ""}
+        ${c.fee ? `<span>Fee <b>${usd(c.fee)}</b></span>` : ""}
+        ${c.email ? `<span>${esc(c.email)}</span>` : ""}
+        ${c.phone ? `<span>${esc(c.phone)}</span>` : ""}
+      </div>
+    </div>
+    <div style="display:grid;gap:6px;justify-items:end">
+      <span class="pill" style="color:${fg};background:${bg}">${c.stage}</span>
+      ${dueBadge(c)}
+    </div>
+    ${c.next || c.notes ? `<div class="notes">${c.next ? `<b>Next:</b> ${esc(c.next)}` : ""}${c.next && c.notes ? " · " : ""}${esc(c.notes || "")}</div>` : ""}
+    <div class="actions">
+      ${next ? `<button class="ghost" data-adv="${c.id}">Move to ${next}</button>` : ""}
+      <button class="ghost" data-edit="${c.id}">Edit</button>
+    </div>
+  </div>`;
+}
+
+function openDlg(id){
+  editingId = id || null;
+  const f = $("form");
+  f.reset();
+  $("dlgTitle").textContent = id ? "Edit client" : "Add client";
+  if (id){
+    const c = clients.find(x => x.id === id) || {};
+    for (const k of ["name","opposing","matter","amount","fee","stage","due","email","phone","next","notes"])
+      if (c[k] != null) f.elements[k].value = c[k];
+  }
+  $("dlg").showModal();
+}
+
+async function save(){
+  const f = $("form"), c = {};
+  for (const k of ["name","opposing","matter","amount","fee","stage","due","email","phone","next","notes"])
+    c[k] = f.elements[k].value.trim ? f.elements[k].value.trim() : f.elements[k].value;
+  if (!c.name || !db) return;
+  c.updatedAt = new Date().toISOString();
+  try {
+    if (editingId) await db.doc("clients/" + editingId).set(c);
+    else await db.collection("clients").add(c);
+  } catch(e){ $("status").textContent = "Save failed: " + e.message; }
+}
+
+async function advance(id){
+  const c = clients.find(x => x.id === id);
+  const next = c && STAGES[STAGES.indexOf(c.stage) + 1];
+  if (!next) return;
+  try { await db.doc("clients/" + id).update({stage: next, updatedAt: new Date().toISOString()}); }
+  catch(e){ $("status").textContent = "Update failed: " + e.message; }
+}
+
+$("addBtn").onclick = () => openDlg();
+$("emptyAdd").onclick = () => openDlg();
+$("cancelBtn").onclick = () => $("dlg").close();
+$("form").addEventListener("submit", save);
+
+claude.use("db").then(d => {
+  if (!d){ $("status").textContent = "Database unavailable in this view. Records cannot load here."; return; }
+  db = d;
+  $("addBtn").hidden = false;
+  d.collection("clients").onSnapshot(snap => {
+    clients = snap.docs.filter(x => x.exists).map(x => ({id: x.id, ...x.data()}));
+    clients.sort((a,b) => STAGES.indexOf(a.stage) - STAGES.indexOf(b.stage) || String(a.name).localeCompare(String(b.name)));
+    $("status").textContent = "";
+    render();
+  }, e => { $("status").textContent = "Database error: " + e.message; });
+});
+render();
+</script>
