@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hochman Law Group</title>
+<meta name="description" content="Demand letters, civil litigation, and contracts. Flat fees, clear scope, direct counsel.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F6F6F3; --card:#FFFFFF; --ink:#232B36; --muted:#5A6472;
+  --line:#DDDFDA; --accent:#2F5A8F; --accent-dark:#24476F; --accent-ink:#FFFFFF;
+  --brass:#9C7B3C; --wash:#EAEEF3;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--card);color:var(--ink);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+img,svg{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.2;text-wrap:balance}
+a{color:var(--accent)}
+
+/* header */
+.top{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:5}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+.logo{font:600 15px/1 "IBM Plex Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.logo b{color:var(--brass);font-weight:600}
+nav{display:flex;align-items:center;gap:22px}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:none;border-radius:4px;padding:10px 20px;font:600 15px "IBM Plex Sans",sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--accent-dark)}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.btn.ghost:hover{background:var(--wash)}
+
+/* hero */
+.hero{background:var(--paper);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:72px 24px}
+.hero h1{font-size:clamp(30px,4.5vw,44px);font-weight:700}
+.hero p{color:var(--muted);margin:16px 0 28px;max-width:46ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.kicker{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:12px}
+
+/* assurance strip */
+.strip{border-bottom:1px solid var(--line)}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:22px 24px}
+.strip div{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.strip svg{flex:none}
+
+/* sections */
+section{padding:64px 0}
+.sechead{max-width:56ch;margin-bottom:36px}
+.sechead h2{font-size:clamp(24px,3vw,32px)}
+.sechead p{color:var(--muted);margin-top:10px}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.svc h3{font-size:19px}
+.svc p{color:var(--muted);font-size:14px;flex:1}
+.svc a{font-size:14px;font-weight:600;text-decoration:none}
+.svc a:hover{text-decoration:underline}
+.icon{width:44px;height:44px;border-radius:6px;background:var(--wash);display:grid;place-items:center}
+
+/* steps */
+.steps-bg{background:var(--paper);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
+.step{counter-increment:step}
+.step::before{content:counter(step);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 16px "Source Serif 4",Georgia,serif;margin-bottom:14px}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:14px}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.about ul{list-style:none;padding:0;margin-top:18px;display:grid;gap:10px}
+.about li{display:flex;gap:10px;color:var(--muted);font-size:15px}
+.about li svg{flex:none;margin-top:4px}
+
+/* cta band */
+.band{background:var(--accent);color:var(--accent-ink)}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:48px 24px;flex-wrap:wrap}
+.band h2{font-size:clamp(22px,3vw,30px)}
+.band p{opacity:.85;margin-top:6px}
+.band .btn{background:var(--card);color:var(--accent)}
+.band .btn:hover{background:var(--paper)}
+
+/* footer */
+footer{border-top:1px solid var(--line);background:var(--paper)}
+footer .wrap{padding:32px 24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+footer .note{max-width:60ch}
+
+@media (max-width:760px){
+  nav a{display:none}
+  .hero .wrap,.about .wrap{grid-template-columns:1fr;padding-block:48px}
+  .hero-art{order:-1;max-width:420px}
+  .strip .wrap,.steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><b>Hochman</b> Law Group</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#about">About</a>
+      <a class="btn" href="#contact">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Counsel without the runaround</div>
+      <h1>Legal work with a clear scope and a fixed price.</h1>
+      <p>Demand letters, civil litigation, and contracts, handled directly by your attorney. You know the fee and the timeline before we begin.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Get started</a>
+        <a class="btn ghost" href="#services">See services</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 460 360" role="img" aria-label="Illustration of a demand letter beside the scales of justice">
+      <rect x="0" y="0" width="460" height="360" rx="10" fill="#EAEEF3"/>
+      <!-- letter -->
+      <g transform="translate(60 60)">
+        <rect x="6" y="10" width="180" height="240" rx="4" fill="#D9DFE7"/>
+        <rect x="0" y="0" width="180" height="240" rx="4" fill="#FFFFFF" stroke="#DDDFDA"/>
+        <rect x="20" y="26" width="80" height="10" rx="2" fill="#2F5A8F"/>
+        <rect x="20" y="52" width="140" height="6" rx="2" fill="#C7CDD6"/>
+        <rect x="20" y="68" width="140" height="6" rx="2" fill="#C7CDD6"/>
+        <rect x="20" y="84" width="112" height="6" rx="2" fill="#C7CDD6"/>
+        <rect x="20" y="110" width="140" height="6" rx="2" fill="#C7CDD6"/>
+        <rect x="20" y="126" width="140" height="6" rx="2" fill="#C7CDD6"/>
+        <rect x="20" y="142" width="96" height="6" rx="2" fill="#C7CDD6"/>
+        <rect x="20" y="176" width="64" height="8" rx="2" fill="#9C7B3C"/>
+        <path d="M20 208 q14 -14 28 0 t28 0 t20 -4" fill="none" stroke="#2F5A8F" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <!-- scales -->
+      <g transform="translate(300 70)" stroke="#232B36" stroke-width="5" stroke-linecap="round" fill="none">
+        <line x1="60" y1="10" x2="60" y2="180"/>
+        <line x1="0" y1="34" x2="120" y2="34"/>
+        <circle cx="60" cy="10" r="7" fill="#9C7B3C" stroke="none"/>
+        <line x1="30" y1="190" x2="90" y2="190"/>
+        <g stroke-width="3">
+          <line x1="0" y1="34" x2="-16" y2="82"/><line x1="0" y1="34" x2="16" y2="82"/>
+          <path d="M-24 82 a24 24 0 0 0 48 0 z" fill="#2F5A8F" stroke="none"/>
+          <line x1="120" y1="34" x2="104" y2="82"/><line x1="120" y1="34" x2="136" y2="82"/>
+          <path d="M96 82 a24 24 0 0 0 48 0 z" fill="#2F5A8F" stroke="none"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div>
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#2E7D4F" stroke-width="2" stroke-linecap="round"><path d="M3 10.5 8 15 17 5"/></svg>
+      Flat fees quoted up front
+    </div>
+    <div>
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#2E7D4F" stroke-width="2" stroke-linecap="round"><path d="M3 10.5 8 15 17 5"/></svg>
+      One attorney, start to finish
+    </div>
+    <div>
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#2E7D4F" stroke-width="2" stroke-linecap="round"><path d="M3 10.5 8 15 17 5"/></svg>
+      Deadlines set in writing
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sechead">
+      <h2>What we handle</h2>
+      <p>Focused services, each with a defined deliverable. If your matter needs something else, we will say so at the first call.</p>
+    </div>
+    <div class="grid">
+      <div class="svc">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F5A8F" stroke-width="1.8" stroke-linecap="round"><path d="M4 3h12l4 4v14H4z"/><path d="M16 3v4h4"/><path d="M8 12h8M8 16h8M8 8h4"/></svg>
+        </div>
+        <h3>Demand letters</h3>
+        <p>A precise statement of your claim, the amount owed, and the deadline to respond, drafted to be taken seriously and to set up the next step.</p>
+        <a href="#contact">Start a demand &rsaquo;</a>
+      </div>
+      <div class="svc">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F5A8F" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v18M4 21h16M6 3h12"/><path d="M6 3 3 9h6zM18 3l-3 6h6z"/></svg>
+        </div>
+        <h3>Civil litigation</h3>
+        <p>Pleadings, motions, and trial practice for plaintiffs and defendants. Strategy first, filings second, and no motion without a purpose.</p>
+        <a href="#contact">Discuss your case &rsaquo;</a>
+      </div>
+      <div class="svc">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F5A8F" stroke-width="1.8" stroke-linecap="round"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6"/><path d="M12 17q2 -2 4 0" ></path></svg>
+        </div>
+        <h3>Contracts</h3>
+        <p>Drafting and review that flags what actually matters: payment terms, exits, and remedies, in plain language you can enforce.</p>
+        <a href="#contact">Send a contract &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-bg" id="process">
+  <div class="wrap">
+    <div class="sechead">
+      <h2>How it works</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Tell us the facts</h3>
+        <p>A short intake call. You describe the dispute or the document; we tell you whether we can help and what it costs.</p>
+      </div>
+      <div class="step">
+        <h3>Approve the scope</h3>
+        <p>You receive the fee, the deliverable, and the deadline in writing. Nothing starts until you sign off.</p>
+      </div>
+      <div class="step">
+        <h3>We deliver</h3>
+        <p>The letter goes out, the contract comes back marked up, or the filing is made. You are copied on everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a courthouse">
+      <rect width="400" height="300" rx="10" fill="#EAEEF3"/>
+      <g transform="translate(70 60)">
+        <path d="M0 60 130 8 260 60z" fill="#2F5A8F"/>
+        <rect x="10" y="66" width="240" height="12" fill="#232B36"/>
+        <g fill="#FFFFFF" stroke="#DDDFDA">
+          <rect x="26" y="84" width="26" height="90"/>
+          <rect x="76" y="84" width="26" height="90"/>
+          <rect x="126" y="84" width="26" height="90"/>
+          <rect x="176" y="84" width="26" height="90"/>
+          <rect x="212" y="84" width="26" height="90"/>
+        </g>
+        <rect x="0" y="176" width="260" height="14" fill="#232B36"/>
+        <circle cx="130" cy="42" r="10" fill="#9C7B3C"/>
+      </g>
+    </svg>
+    <div>
+      <div class="kicker">About the firm</div>
+      <h2>Small by design</h2>
+      <p style="color:var(--muted);margin-top:10px">Hochman Law Group keeps its caseload deliberately narrow so every matter gets the attorney's direct attention. No handoffs, no billing surprises, no boilerplate.</p>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#9C7B3C" stroke-width="2" stroke-linecap="round"><path d="M3 10.5 8 15 17 5"/></svg>Your calls and emails are answered by the attorney handling your matter.</li>
+        <li><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#9C7B3C" stroke-width="2" stroke-linecap="round"><path d="M3 10.5 8 15 17 5"/></svg>Every engagement has a written scope before work begins.</li>
+        <li><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#9C7B3C" stroke-width="2" stroke-linecap="round"><path d="M3 10.5 8 15 17 5"/></svg>If a matter is outside our practice, we say so and point you elsewhere.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="band" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Tell us what happened.</h2>
+      <p>Email the firm and you will hear back within one business day.</p>
+    </div>
+    <a class="btn" href="mailto:contact@hochmanlawgroup.com">Email the firm</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 Hochman Law Group</div>
+    <div class="note">Attorney advertising. Prior results do not guarantee a similar outcome. Nothing on this site is legal advice, and contacting the firm does not create an attorney&#8209;client relationship.</div>
+  </div>
+</footer>
+
+</body>
+</html>
