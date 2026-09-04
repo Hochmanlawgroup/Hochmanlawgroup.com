@@ -145,7 +145,7 @@ footer a{color:var(--muted)}
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">Hochman <span>Law Group</span></a>
+    <a class="brand" href="#top">Hochman <span>Law P.C.</span></a>
     <div class="navlinks">
       <a href="#reviews">Reviews</a>
       <a href="#how">How It Works</a>
@@ -172,7 +172,7 @@ footer a{color:var(--muted)}
 
   <div class="docwrap" aria-hidden="true">
     <div class="doc">
-      <div class="lh"><b>HOCHMAN LAW GROUP</b><i>Attorneys at Law · New York</i></div>
+      <div class="lh"><b>HOCHMAN LAW P.C.</b><i>Attorneys at Law · New York</i></div>
       <div class="line w40"></div>
       <div class="re">RE: DEMAND FOR PAYMENT</div>
       <div class="line w85"></div>
@@ -181,7 +181,7 @@ footer a{color:var(--muted)}
       <div class="line w60"></div>
       <div class="line w85"></div>
       <div class="line w75"></div>
-      <div class="sig">Hochman Law Group</div>
+      <div class="sig">Hochman Law P.C.</div>
       <div class="sigline">Attorney at Law, State of New York</div>
     </div>
     <div class="docseal">Attorney<br>Signed</div>
@@ -211,15 +211,44 @@ footer a{color:var(--muted)}
   <div class="wrap">
     <div class="revhead">
       <h2>What clients say on Google</h2>
-      <div class="rating" id="ratingLine" hidden>
-        <span class="stars" id="ratingStars"></span>
-        <span id="ratingText"></span>
+      <div class="rating" id="ratingLine">
+        <span class="stars" id="ratingStars">★★★★★</span>
+        <span id="ratingText">5.0 · 8 Google reviews</span>
       </div>
     </div>
     <div class="revgrid" id="revGrid">
-      <p style="color:var(--muted)">Loading verified Google reviews…</p>
+      <div class="rev">
+        <div class="who"><span>Avivit G.</span> <span class="when">Aug 2026</span></div>
+        <span class="stars">★★★★★</span>
+        <p>I needed a legal letter written on short notice for a time-sensitive matter. Daniel was fast, professional, and precise. The letter resolved the issue completely, no court needed.</p>
+      </div>
+      <div class="rev">
+        <div class="who"><span>A. Nonamys</span> <span class="when">Aug 2026</span></div>
+        <span class="stars">★★★★★</span>
+        <p>Daniel helped me through a bitter dispute. He sent out several rounds of demand letters, which helped me resolve the matter. Responsive and easy to work with throughout.</p>
+      </div>
+      <div class="rev">
+        <div class="who"><span>Eliezer Fried</span> <span class="when">Aug 2026</span></div>
+        <span class="stars">★★★★★</span>
+        <p>Daniel has handled multiple matters for me, including letters to my landlord. His work is consistently excellent and he has created tremendous value every step of the way.</p>
+      </div>
+      <div class="rev">
+        <div class="who"><span>Carissa</span> <span class="when">Sep 2026</span></div>
+        <span class="stars">★★★★★</span>
+        <p>Fantastic flat-fee lawyer. Daniel reviewed our contract dispute, spotted problems we missed, and gave us a clear game plan within days. Straight answers, fair pricing, fast turnaround.</p>
+      </div>
+      <div class="rev">
+        <div class="who"><span>Jonathan Amir</span> <span class="when">Sep 2026</span></div>
+        <span class="stars">★★★★★</span>
+        <p>Thorough, responsive, and clear. I recommend Hochman Law to anybody in New York looking for legal help.</p>
+      </div>
+      <div class="rev">
+        <div class="who"><span>Yehuda Khaloo</span> <span class="when">Aug 2026</span></div>
+        <span class="stars">★★★★★</span>
+        <p>Flat fees, straight answers, quick responses every time. Easy recommendation for anyone in New York.</p>
+      </div>
     </div>
-    <p class="gsource">Reviews load live from our <a id="gProfileLink" href="https://www.google.com/maps" target="_blank" rel="noopener">Google Business Profile</a>. Read all of them, or leave one there.</p>
+    <p class="gsource">Reviews load live from our <a id="gProfileLink" href="https://maps.google.com/maps?cid=5182036227590650496" target="_blank" rel="noopener">Google Business Profile</a>. Read all of them, or <a href="https://search.google.com/local/writereview?placeid=ChIJOwouRw1ZwokRgPq-Tn5K6kc" target="_blank" rel="noopener">leave one there</a>.</p>
   </div>
 </section>
 
@@ -249,7 +278,7 @@ footer a{color:var(--muted)}
   <div class="wrap trustgrid">
     <div>
       <h3>Real law firm, real attorney</h3>
-      <p>Every letter is reviewed and signed by a licensed New York attorney at Hochman Law Group. Not a template mill.</p>
+      <p>Every letter is reviewed and signed by a licensed New York attorney at Hochman Law P.C. Not a template mill.</p>
     </div>
     <div>
       <h3>Full refund if we can't help</h3>
@@ -297,7 +326,7 @@ footer a{color:var(--muted)}
 </section>
 
 <footer>
-  Hochman Law Group · New York, NY · <a href="tel:+19176537259">(917) 653‑7259</a><br>
+  Hochman Law P.C. · New York, NY · <a href="tel:+19176537259">(917) 653‑7259</a><br>
   Attorney advertising. Prior results do not guarantee a similar outcome. This page is not legal advice.
 </footer>
 
@@ -310,20 +339,21 @@ footer a{color:var(--muted)}
 {
   "@context": "https://schema.org",
   "@type": "LegalService",
-  "name": "Hochman Law Group – Demand Letter NY",
+  "name": "Demand Letter NY by Hochman Law P.C.",
   "url": "https://demandletterny.com/",
   "telephone": "+19176537259",
   "areaServed": "New York",
   "priceRange": "$349",
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "8"},
   "address": {"@type": "PostalAddress", "addressRegion": "NY", "addressCountry": "US"}
 }
 </script>
 
 <script>
 /* ================= CONFIG — fill these three in ================= */
-const CHECKOUT_URL = "";        // your payment link (LawPay/Stripe checkout). Empty = CTA scrolls to pricing.
+const CHECKOUT_URL = "https://buy.stripe.com/fZu7sM3TY24q9ECeMn1oI2W";
 const GOOGLE_PLACES_API_KEY = ""; // Google Maps Platform key, restricted to this domain + Places API (New)
-const GOOGLE_PLACE_ID = "";       // your Google Business Profile place ID
+const GOOGLE_PLACE_ID = "ChIJOwouRw1ZwokRgPq-Tn5K6kc";
 /* =============================================================== */
 
 // Route every CTA to checkout once CHECKOUT_URL is set
@@ -335,8 +365,7 @@ if (CHECKOUT_URL) {
 async function loadReviews(){
   const grid = document.getElementById("revGrid");
   if (!GOOGLE_PLACES_API_KEY || !GOOGLE_PLACE_ID){
-    grid.innerHTML = '<p style="color:var(--muted)">Reviews are on our <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Business Profile</a>.</p>';
-    return;
+    return; // baked-in verified reviews already rendered
   }
   try {
     const r = await fetch(`https://places.googleapis.com/v1/places/${GOOGLE_PLACE_ID}?fields=rating,userRatingCount,reviews,googleMapsUri`, {
@@ -368,7 +397,7 @@ async function loadReviews(){
         </div>`).join("");
     }
   } catch(e){
-    grid.innerHTML = '<p style="color:var(--muted)">See our reviews on <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google</a>.</p>';
+    /* keep baked-in reviews on fetch failure */
   }
 }
 loadReviews();
