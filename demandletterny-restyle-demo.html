@@ -123,12 +123,14 @@ nav{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--
 .letter .cite{font-family:'IBM Plex Mono',monospace;font-size:10px;background:var(--paper-deep);padding:1px 5px;color:var(--cert-deep)}
 .letter .sig{font-family:'Libre Caslon Text',serif;font-style:italic;font-size:19px;color:var(--ink);margin-top:12px}
 .letter .sig-line{font-size:10px;margin-top:2px}
+.letter::after{content:"";position:absolute;inset:0;background:var(--white);border:1px solid var(--rule);z-index:-1;transform:rotate(-2.2deg) translate(-7px,7px);box-shadow:0 12px 30px rgba(22,36,58,.10)}
 .letter .ldate{font-size:10px;margin-bottom:10px}
-.letter .addr{font-size:10px;line-height:1.5;margin-bottom:10px;color:var(--ink)}
-.letter .items{margin:8px 0 10px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:6px 0;font-size:10.5px}
-.letter .items div{display:flex;justify-content:space-between;padding:2px 0}
-.letter .items .tot{font-weight:700;color:var(--ink);border-top:1px solid var(--rule);margin-top:3px;padding-top:4px}
-.letter .cap{text-align:center;font-size:10px;color:var(--ink-soft);margin-top:10px;font-style:italic}
+.letter .bars{margin:9px 0}
+.letter .bars i{display:block;height:7px;border-radius:3px;background:var(--paper-deep);margin:7px 0}
+.letter .bars i:nth-child(2){width:94%}
+.letter .bars i:nth-child(3){width:86%}
+.letter .bars i:last-child{width:62%}
+.letter-cap{text-align:center;font-size:12px;color:var(--ink-soft);margin:16px auto 0;font-style:italic;max-width:430px}
 .stamp{position:absolute;bottom:22px;right:-14px;transform:rotate(-9deg);border:2.5px solid var(--cert);color:var(--cert);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;padding:6px 12px;border-radius:3px;background:rgba(251,250,246,.92)}
 
 /* SECTIONS */
@@ -911,21 +913,17 @@ function homePage(){
     <div class="letter-wrap"><div class="letter">
       <div class="letter-head"><div class="firm">HOCHMAN LAW PC</div><div class="firm-sub">Attorney and Counselor at Law · New York</div></div>
       <p class="ldate">September 4, 2026</p>
-      <p class="addr">Mr. John Landlord<br>145 Example Avenue<br>Brooklyn, New York 11201</p>
       <p class="via" style="margin-bottom:8px">Via Certified Mail, Return Receipt Requested</p>
-      <p class="re">Re: Security Deposit, 22 Sample Street, Apt 4B &middot; Demand for $2,400.00</p>
-      <p>Dear Mr. Landlord:</p>
-      <p>This firm represents your former tenant. My client vacated the premises on July 31, 2026. More than fourteen days have passed, and you have neither returned the deposit nor provided the itemized statement <span class="cite">GOL § 7-108(1-a)(e)</span> requires. Under the statute you have <b>forfeited any right to retain any portion of the deposit</b>, and a willful violation exposes you to punitive damages of up to twice that amount under <span class="cite">§ 7-108(1-a)(g)</span>.</p>
-      <div class="items">
-        <div><span>Security deposit unlawfully retained</span><span>$2,400.00</span></div>
-        <div><span>Statutory exposure if willful (2x)</span><span>$4,800.00</span></div>
-        <div class="tot"><span>Amount demanded</span><span>$2,400.00</span></div>
-      </div>
-      <p>Demand is made for payment in full by <b>September 14, 2026</b>. Absent payment, my client is prepared to pursue all available remedies, including punitive damages and attorney fees under RPL § 234, without further notice. All rights are reserved.</p>
+      <p class="re">Re: Demand for Return of Security Deposit in the Amount of $2,400.00</p>
+      <div class="bars"><i></i><i></i><i></i></div>
+      <p>More than fourteen days have passed since my client vacated the premises, and you have neither returned the deposit nor provided the itemized statement required by <span class="cite">GOL § 7-108(1-a)(e)</span>. You have therefore <b>forfeited any right to retain any portion of the deposit</b>.</p>
+      <div class="bars"><i></i><i></i><i></i><i></i></div>
+      <p>Demand is made for payment in full by <b>September 14, 2026</b>.</p>
+      <div class="bars"><i></i><i></i></div>
       <div class="sig">Daniel Hochman</div><div class="sig-line">Daniel Hochman, Esq. · Hochman Law PC</div>
       <div class="stamp">CERTIFIED MAIL</div>
-      <div class="cap">Illustrative sample. Every letter is drafted from your facts and signed by the attorney.</div>
-    </div></div>
+    </div>
+    <div class="letter-cap">Illustrative sample. Your letter is drafted from your facts and signed by the attorney.</div></div>
   </div></div>
 
   <section id="menu" style="padding-bottom:0"><div class="container">
