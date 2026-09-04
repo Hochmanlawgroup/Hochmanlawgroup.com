@@ -3,9 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demand Letter NY | Attorney Demand Letter, Flat Fee, Sent in 48 Hours</title>
-<meta name="description" content="A New York attorney drafts and sends your demand letter on law firm letterhead within 48 hours. Flat fee, pay online, every payment method accepted.">
+<title>NY Attorney Demand Letter | $349 Flat Fee, Sent in 48 Hours</title>
+<meta name="description" content="A licensed New York attorney drafts, signs, and sends your demand letter on law firm letterhead within 48 hours. $349 flat fee, pay online, full refund if we can't help. Start in minutes.">
 <link rel="canonical" href="https://demandletterny.com/">
+<!-- Google Analytics 4: replace G-XXXXXXXXXX with the GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{
@@ -360,6 +368,24 @@ const GOOGLE_PLACE_ID = "ChIJOwouRw1ZwokRgPq-Tn5K6kc";
 if (CHECKOUT_URL) {
   document.querySelectorAll("[data-checkout]").forEach(a => { a.href = CHECKOUT_URL; });
 }
+
+// GA4 events: checkout clicks, phone taps, FAQ opens
+document.querySelectorAll("[data-checkout]").forEach(a => {
+  a.addEventListener("click", () => gtag("event", "begin_checkout", {
+    currency: "USD", value: 349,
+    location: a.closest(".stickycta") ? "sticky_bar" : a.closest("nav") ? "nav" : a.closest(".finalcta") ? "final_cta" : a.closest(".pricecard") ? "price_card" : "hero"
+  }));
+});
+document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+  a.addEventListener("click", () => gtag("event", "phone_call_click", {
+    location: a.closest(".stickycta") ? "sticky_bar" : a.closest(".topbar") ? "top_bar" : "body"
+  }));
+});
+document.querySelectorAll("details").forEach(d => {
+  d.addEventListener("toggle", () => {
+    if (d.open) gtag("event", "faq_open", {question: d.querySelector("summary")?.textContent?.trim() || ""});
+  });
+});
 
 // Dynamic Google reviews via Places API (New). No static screenshots.
 async function loadReviews(){

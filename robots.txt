@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /demand-letter-crm.html
+
+Sitemap: https://demandletterny.com/sitemap.xml
