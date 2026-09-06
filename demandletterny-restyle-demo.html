@@ -618,12 +618,14 @@ footer{background:#14110B}
 .bp-tag2{margin-top:5px;font:500 9.5px/1.7 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#8A7A55}
 @media(max-width:860px){
 .hero-grid{grid-template-columns:1fr}
-.brandpanel{max-width:400px;margin:4px auto 26px}
-/* Envelope sits directly after the headline on mobile */
+/* Plain gold envelope only, directly after the headline on mobile */
 .hero-grid>div:first-child{display:contents}
 .hero-grid .eyebrow{order:-3}
 .hero-grid h1{order:-2}
-.hero-grid .brandpanel{order:-1}
+.hero-grid .brandpanel{order:-1;background:none;box-shadow:none;padding:0;margin:0 auto 24px}
+.brandpanel::after{display:none}
+.brandpanel .bp-word,.brandpanel .bp-tag,.brandpanel .bp-tag2{display:none}
+.brandpanel svg{margin:0 auto;width:150px}
 }
 /* Envelope motif on the dark bands */
 .band,.cta-band{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='84' viewBox='0 0 120 84'%3E%3Cg opacity='.14' fill='none' stroke='%23A8894E' stroke-width='3'%3E%3Crect x='6' y='12' width='108' height='62'/%3E%3Cpath d='M6 12 L60 50 L114 12'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='84' viewBox='0 0 120 84'%3E%3Cg opacity='.14' fill='none' stroke='%23A8894E' stroke-width='3'%3E%3Crect x='6' y='12' width='108' height='62'/%3E%3Cpath d='M6 12 L60 50 L114 12'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat,no-repeat;background-position:right -28px top 26px,left -34px bottom -18px;background-size:190px,150px}
